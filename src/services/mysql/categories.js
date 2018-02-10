@@ -4,7 +4,7 @@ const categories = deps => {
            return new Promise((resolve, reject) => {
             const { connection, errorHandler } = deps 
 
-            connection.querry('SELECT * FROM categories', (error, results) => {
+            connection.query('SELECT * FROM categories', (error, results) => {
                 if (error) {
                    errorHandler(error, 'Falha ao listar as categorias', reject)
                    return false
@@ -43,4 +43,4 @@ const categories = deps => {
     }
 }
 
-module.exports.categories
+module.exports = categories
