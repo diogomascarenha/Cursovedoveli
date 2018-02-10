@@ -1,7 +1,7 @@
 const categories = deps => {
     return {
         all: () => {
-            new Promise((resolve, reject) => {
+           return new Promise((resolve, reject) => {
             const { connection } = deps 
             connection.querry('SELECT * FROM categories', (error, results) => {
                 if (error) {
