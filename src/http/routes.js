@@ -23,10 +23,16 @@ const routes = (server) => {
     }
  })
 
-// server.put('categoria', (req, res, next) => {
-//    res.send()
-//    next()
-// })
+ server.put('categoria', async (req, res, next) => {
+   const { id, name } = req.params
+   try{
+     res.send(await db.categories().update(id, name))
+     next()
+   } catch (error) {
+     res.send(error)
+     next()
+   }
+ })
 
 // server.delete('categoria', (req, res, next) => {
 //    res.send() 

@@ -26,7 +26,19 @@ const categories = deps => {
                 })
             })
         },
-        update: (id, name) => {},
+        update: (id, name) => {
+            return new Promise((resolve, reject) => {
+                const { connection, errorHandler} = deps
+
+                connection.query('UPDATE categories SET name = ? Where id = ?)', [name, id], (error, results) =>{ 
+                if (error) {
+                    errorHandler(error, `Falha ao atualizar a categoria ${name}`, reject)
+                    return false
+                }
+                resolve({category: {name, id:results.insertId}})
+            })
+        })
+        },
         del: (id) => {}
     }
 }
