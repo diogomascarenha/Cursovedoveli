@@ -13,7 +13,7 @@ const errorHandler =  (error, msg, rejectFunction) => {
     rejectFunction({ error: msg })
 }
 
-const categoryModule = require('./categories')
+const categoryModule = require('./categories')({connection, errorHandler})
 
 module.exports = {
     categories: () => categoryModule
