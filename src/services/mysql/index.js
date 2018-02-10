@@ -1,12 +1,8 @@
 
 const mysqlServer = require('mysql')
+const configDb    = require('../../config/db')
 
-const connection = mysqlServer.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'KayK2809!@#$%', 
-    database: 'restiful_ws'
-})
+const connection = mysqlServer.createConnection(configDb)
 
 const errorHandler =  (error, msg, rejectFunction) => {
     consele.error(error)
