@@ -8,7 +8,13 @@ const connection = mysqlServer.createConnection({
     database: 'restiful_ws'
 })
 
-const categoryModule = require('./categories')
+const errorHandler =  (error, msg, rejectFunction) => {
+    consele.error(error)
+    rejectFunction({ error: msg })
+}
+
+const categoryModule = require('./categories')({connection, errorHandler})
+
 
 module.exports = {
     categories: () => categoryModule
